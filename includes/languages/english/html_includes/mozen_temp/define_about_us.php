@@ -1,0 +1,2 @@
+<p><strong><font face="verdana,arial,helvetica,sans-serif">ABOUT US Sample Text&nbsp;...</font></strong></p>
+<p>This section of text is from the Define Pages Editor located under Tools in the Admin.</p>

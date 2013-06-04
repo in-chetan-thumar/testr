@@ -1,0 +1,15 @@
+#siteMap{margin:0;padding:8px;text-align:left;}
+#siteMap h1{margin:0;padding:10px 0;font-size:1.5em;font-weight:700;}
+#siteMapList{width:90%;}
+#siteMapList ul, #siteMapList li {margin:0;padding:0;list-style:none;}
+#siteMapList ul li{margin:0 0 0 5px;padding:2px 10px;font-size:1em;color:#000;font-weight:400;}
+#siteMapList ul li.first{font-weight:700;padding:2px 10px;}
+#siteMapList ul ul{margin:0 0 0 5px;padding:2px 10px;list-style:none;}
+#siteMapList ul ul li{margin:0;padding:0 5px;}
+
+#siteMapBox {
+   padding:3px 3px;
+	float:right;
+	width:47%;
+	border: 1px solid navy;
+}
