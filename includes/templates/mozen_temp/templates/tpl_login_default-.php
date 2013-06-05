@@ -7,6 +7,7 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: tpl_login_default.php 18695 2011-05-04 05:24:19Z drbyte $
+ * @version $Id: Integrated COWOA v2.4  - 2007 - 2013
  */
 ?>
 <div class="centerColumn" id="loginDefault">
@@ -18,6 +19,9 @@
 
 <?php if ( USE_SPLIT_LOGIN_MODE == 'True' || $ec_button_enabled) { ?>
 <!--BOF PPEC split login- DO NOT REMOVE-->
+<!-- BOF COWOA 1 of 2 -->
+<h3><?php echo TEXT_STANDARD_ACCOUNT_HEADING; ?></h3>
+<!-- EOF COWOA 1 of 2 -->
 <fieldset class="floatingBox back">
 <legend><?php echo HEADING_NEW_CUSTOMER_SPLIT; ?></legend>
 <?php // ** BEGIN PAYPAL EXPRESS CHECKOUT ** ?>
@@ -54,38 +58,48 @@
 </form>
 </fieldset>
 <br class="clearBoth" />
+<?php
+  if ($_SESSION['cart']->count_contents() > 0) { ?>
+<!-- BOF COWOA 2 of 2 -->
+<?php if (COWOA_STATUS == 'true') { ?>  
+<h3><?php echo TEXT_COWOA_HEADING; ?></h3>
+    <fieldset>
+    <legend><?php echo COWOA_HEADING; ?></legend>
+    <?php echo TEXT_RATHER_COWOA; ?>
+    <div class="buttonRow forward">
+    <?php echo "<a href=\"" . zen_href_link(FILENAME_NO_ACCOUNT, '', 'SSL') . "\">"; ?>
+    <?php echo zen_image_button(BUTTON_IMAGE_CONTINUE, BUTTON_CONTINUE_ALT); ?></a></div>
+    <br class="clearBoth" />
+    </fieldset>
+  <?php } ?>
+<!-- EOF COWOA 2 of 2-->  
+<?php } ?>
 <!--EOF PPEC split login- DO NOT REMOVE-->
 <?php } else { ?>
 <!--BOF normal login-->
 <?php
   if ($_SESSION['cart']->count_contents() > 0) {
 ?>
-<div class="advisory"><?php //echo TEXT_VISITORS_CART; ?></div>
+<div class="advisory"><?php echo TEXT_VISITORS_CART; ?></div>
 <?php
   }
 ?>
 <?php echo zen_draw_form('login', zen_href_link(FILENAME_LOGIN, 'action=process', 'SSL'), 'post', 'id="loginForm"'); ?>
-
-<div class="review_box">
 <fieldset>
-<div class="mj-special6"> <legend><?php echo HEADING_RETURNING_CUSTOMER; ?></legend></div>
+<legend><?php echo HEADING_RETURNING_CUSTOMER; ?></legend>
 
-<div class="mj-emailadd">
 <label class="inputLabel" for="login-email-address"><?php echo ENTRY_EMAIL_ADDRESS; ?></label>
-<?php echo zen_draw_input_field('email_address', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_email_address', '22') . ' id="login-email-address"'); ?>
-</div>
+<?php echo zen_draw_input_field('email_address', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_email_address', '40') . ' id="login-email-address"'); ?>
+<br class="clearBoth" />
 
-<div class="mj-pass">
 <label class="inputLabel" for="login-password"><?php echo ENTRY_PASSWORD; ?></label>
-<?php echo zen_draw_password_field('password', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_password','22') . ' id="login-password"'); ?>
-</div>
+<?php echo zen_draw_password_field('password', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_password') . ' id="login-password"'); ?>
 <br class="clearBoth" />
 <?php echo zen_draw_hidden_field('securityToken', $_SESSION['securityToken']); ?>
 </fieldset>
 
 <div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_LOGIN, BUTTON_LOGIN_ALT); ?></div>
 <div class="buttonRow back important"><?php echo '<a href="' . zen_href_link(FILENAME_PASSWORD_FORGOTTEN, '', 'SSL') . '">' . TEXT_PASSWORD_FORGOTTEN . '</a>'; ?></div>
-</div>
 </form>
 <br class="clearBoth" />
 

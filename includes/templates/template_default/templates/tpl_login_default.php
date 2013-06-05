@@ -7,6 +7,7 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: tpl_login_default.php 18695 2011-05-04 05:24:19Z drbyte $
+ * @version $Id: Integrated COWOA v2.4  - 2007 - 2013
  */
 ?>
 <div class="centerColumn" id="loginDefault">
@@ -18,6 +19,9 @@
 
 <?php if ( USE_SPLIT_LOGIN_MODE == 'True' || $ec_button_enabled) { ?>
 <!--BOF PPEC split login- DO NOT REMOVE-->
+<!-- BOF COWOA 1 of 2 -->
+<h3><?php echo TEXT_STANDARD_ACCOUNT_HEADING; ?></h3>
+<!-- EOF COWOA 1 of 2 -->
 <fieldset class="floatingBox back">
 <legend><?php echo HEADING_NEW_CUSTOMER_SPLIT; ?></legend>
 <?php // ** BEGIN PAYPAL EXPRESS CHECKOUT ** ?>
@@ -54,6 +58,22 @@
 </form>
 </fieldset>
 <br class="clearBoth" />
+<?php
+  if ($_SESSION['cart']->count_contents() > 0) { ?>
+<!-- BOF COWOA 2 of 2 -->
+<?php if (COWOA_STATUS == 'true') { ?>  
+<h3><?php echo TEXT_COWOA_HEADING; ?></h3>
+    <fieldset>
+    <legend><?php echo COWOA_HEADING; ?></legend>
+    <?php echo TEXT_RATHER_COWOA; ?>
+    <div class="buttonRow forward">
+    <?php echo "<a href=\"" . zen_href_link(FILENAME_NO_ACCOUNT, '', 'SSL') . "\">"; ?>
+    <?php echo zen_image_button(BUTTON_IMAGE_CONTINUE, BUTTON_CONTINUE_ALT); ?></a></div>
+    <br class="clearBoth" />
+    </fieldset>
+  <?php } ?>
+<!-- EOF COWOA 2 of 2-->  
+<?php } ?>
 <!--EOF PPEC split login- DO NOT REMOVE-->
 <?php } else { ?>
 <!--BOF normal login-->
