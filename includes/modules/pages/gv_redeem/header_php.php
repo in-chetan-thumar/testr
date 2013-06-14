@@ -6,8 +6,7 @@
  * @copyright Copyright 2003-2007 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: header_php.php 6736 2007-08-19 09:55:01Z drbyte $
- * @version $Id: Integrated COWOA v2.4  - 2007 - 2013
+ * @version $Id: header_php.php 62 2009-07-12 21:43:34Z numinix $
  */
 
 require(DIR_WS_MODULES . zen_get_module_directory('require_languages.php'));
@@ -89,4 +88,4 @@ if ($error) {
   $message = TEXT_INVALID_GV;
 }
 
-// eof
+?>

@@ -16,13 +16,13 @@
 <?php  if ($this_is_home_page) { ?>
 
 
-			<div id="mj-slideshow">
+			<!--div id="mj-slideshow">
             	<div class="mj-subcontainer">
             		 <div class="flexslider">
                       <ul class="slides">
                       	
                         <!--Slide-1-->
-                      	<li>
+                      	<!--li>
                              <div class="caption_text">
                                     <p class="flex-caption">Furniture </p>
                                             <div class="slide-description">
@@ -49,10 +49,10 @@
                                 </div>
                               <img src="<?php  echo $template->get_template_dir('',DIR_WS_TEMPLATE, $current_page_base,'images').'/slideshow/bed-2.png'?>" alt="Slide-3" />
                             </div>
-                        </li>
+                        </li-->
                         <!--Slide-1 ends-->
                         <!--Slide-2-->
-                      	<li>
+                      	<!--li>
                             <div class="caption_text">
                                         <p class="flex-caption">Living room</p>
                                                 <div class="slide-description">
@@ -83,7 +83,7 @@
                         </li>
                         <!--Slide-2 ends-->
                         <!--Slide-3-->
-                        <li>
+                        <!--li>
                              <div class="caption_text">
                                 <p class="flex-caption"> Bedroom Collection</p>
                                         <div class="slide-description">
@@ -113,7 +113,7 @@
                         </li>
                         <!--Slide-3 ends-->
                         <!--Slide-4-->
-                        <li>
+                        <!--li>
                              <div class="caption_text">
                                 <p class="flex-caption">Vintage Sofa</p>
                                         <div class="slide-description">
@@ -143,7 +143,7 @@
                         </li>
                         <!--Slide-4 ends-->
                         <!--Slide-5-->
-                        <li>
+                        <!--li>
                             <div class="caption_text">
                                   <p class="flex-caption">King and Queen Beds </p>
                                         <div class="slide-description">
@@ -172,10 +172,10 @@
                             </div>
                         </li>
                         <!--Slide-5 ends-->
-                      </ul>
-                    </div>
+                      <!--/ul-->
+                    <!--/div>
                </div> 
-			</div>
+			</div-->
 
 
 			<div id="mj-featured1">
@@ -275,7 +275,7 @@ if ($this_is_home_page) {
 while (!$show_display_nav->EOF) {
   switch ($show_display_nav->fields['configuration_key']) {
     case 'SHOW_PRODUCT_INFO_MAIN_FEATURED_PRODUCTS':
-      echo '<span class="navOne moduleSpan active_tab"><a href="javascript:void(0)" rel="featuredProducts" class="navOne moduleBox">Featured</a></span>';
+      echo '<span class="navOne moduleSpan active_tab"><a href="javascript:void(0)" rel="featuredProducts" class="navOne moduleBox">Best sellesrs</a></span>';
     break;
     case 'SHOW_PRODUCT_INFO_MAIN_SPECIALS_PRODUCTS':
       echo '<span class="navThree moduleSpan"><a href="javascript:void(0)" rel="specialsDefault" class="navThree moduleBox">Specials</a></span>';

@@ -3,11 +3,10 @@
  * Password Forgotten
  * 
  * @package page
- * @copyright Copyright 2003-2012 Zen Cart Development Team
+ * @copyright Copyright 2003-2006 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version GIT: $Id: Author: DrByte  Tue Jul 31 18:47:04 2012 -0400 Modified in v1.5.1 $
- * @version $Id: Integrated COWOA v2.4  - 2007 - 2013
+ * @version $Id: header_php.php 62 2009-07-12 21:43:34Z numinix $
  */
 
 // This should be first line of the script:
@@ -20,18 +19,6 @@ require(DIR_WS_MODULES . zen_get_module_directory('require_languages.php'));
 $_SESSION['navigation']->remove_current_page();
 
 if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
-// Slam prevention:
-  if ($_SESSION['login_attempt'] > 9)
-  {
-    header('HTTP/1.1 406 Not Acceptable');
-    exit(0);
-  }
-  // BEGIN SLAM PREVENTION
-  if ($_POST['email_address'] != '')
-  {
-    if (! isset($_SESSION['login_attempt'])) $_SESSION['login_attempt'] = 0;
-    $_SESSION['login_attempt'] ++;
-  } // END SLAM PREVENTION
   $email_address = zen_db_prepare_input($_POST['email_address']);
 
   $check_customer_query = "SELECT customers_firstname, customers_lastname, customers_password, customers_id 
@@ -44,8 +31,7 @@ if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
 
   if ($check_customer->RecordCount() > 0) {
 
-    $zco_notifier->notify('NOTIFY_PASSWORD_FORGOTTEN_VALIDATED');
-    $new_password = zen_create_PADSS_password( (ENTRY_PASSWORD_MIN_LENGTH > 0 ? ENTRY_PASSWORD_MIN_LENGTH : 5) );
+    $new_password = zen_create_random_value(ENTRY_PASSWORD_MIN_LENGTH);
     $crypted_password = zen_encrypt_password($new_password);
 
     $sql = "UPDATE " . TABLE_CUSTOMERS . "
@@ -75,4 +61,4 @@ $breadcrumb->add(NAVBAR_TITLE_2);
 
 // This should be last line of the script:
 $zco_notifier->notify('NOTIFY_HEADER_END_PASSWORD_FORGOTTEN');
-// eof
+?>

@@ -24,7 +24,7 @@ ul {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: Oswald,sans-serif;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 }
 
 h1 {
@@ -378,7 +378,7 @@ a
 		z-index:999999;
 	}
 #mj-topbar .mj-grid16 {
-	width:10%;
+	width:15%;
 }
 #mj-topbar .mj-grid24
 {
@@ -713,7 +713,7 @@ width: 63%;
 	box-shadow: 0 1px 1px rgba(255, 255, 255, 0.5) inset;
 	text-transform:uppercase;
 	font-family:Oswald, sans-serif;
-	width:100px;
+	width:130px;
 }
 /*#moduleMenu-wrapper span a:hover*/, .productbtn a:hover {
 	opacity:0.7;
@@ -955,7 +955,7 @@ p.s_desc {
 .prodprice{
 	float:left;
 	width:85%;
-	font-size: 18px !important;
+	font-size: 15px !important;
 	text-align:left;
 }
 .propricemain .prodprice
@@ -2818,6 +2818,8 @@ h4.acc_trigger {
 }
 
 
+/*	Added by chetan*/
+
 #mj-left .leftBoxContainer #yahootreemenuContent a, #mj-right .rightBoxContainer #yahootreemenuContent a{
 	font-size:14px;
 	line-height: 25px;
@@ -2825,4 +2827,28 @@ h4.acc_trigger {
     text-decoration: none;
 	word-wrap:break-word;
 	border-bottom: 0px solid;
+}
+#billingField LABEL.inputLabel {
+    float: left;
+    width: 150px;
+	margin-top:7px;
+}
+.price_amount{
+	float: right;
+	width: 57%;
+}
+#orderTotals{
+	width: 42%;
+}
+.discount{
+	font-size: 15px;
+}
+
+.newssidebox{
+	margin-left:10px;
+	margin-bottom:10px;
+}
+#mj-left .leftBoxContainer .newssidebox a{
+	padding-left:0px;
+	line-height: 15px;
 }

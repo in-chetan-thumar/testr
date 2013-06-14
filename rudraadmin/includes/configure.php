@@ -51,10 +51,10 @@
 // * DIR_FS_* = Filesystem directories (local/physical)
   define('DIR_FS_ADMIN', realpath(dirname(__FILE__) . '/../') . '/');
   //the following path is a COMPLETE path to your Zen Cart files. eg: /var/www/vhost/accountname/public_html/store/
-  define('DIR_FS_CATALOG', 'E:/xampp/htdocs/rudranew/');
+  define('DIR_FS_CATALOG', 'E:/xampp/htdocs/testr/');
 
   //the following path is a COMPLETE path to the /logs/ folder  eg: /var/www/vhost/accountname/public_html/store/logs ... and no trailing slash
-  define('DIR_FS_LOGS', 'E:/xampp/htdocs/rudranew/logs');
+  define('DIR_FS_LOGS', 'E:/xampp/htdocs/testr/logs');
 
   define('DIR_FS_CATALOG_LANGUAGES', DIR_FS_CATALOG . 'includes/languages/');
   define('DIR_FS_CATALOG_IMAGES', DIR_FS_CATALOG . 'images/');
@@ -79,7 +79,7 @@
   // or webserver user has write privileges (chmod 666 or 777). We recommend using the "cache" folder inside the Zen Cart folder
   // ie: /path/to/your/webspace/public_html/zen/cache   -- leave no trailing slash  
   define('SQL_CACHE_METHOD', 'file'); 
-  define('DIR_FS_SQL_CACHE', 'E:/xampp/htdocs/rudranew/cache');
+  define('DIR_FS_SQL_CACHE', 'E:/xampp/htdocs/testr/cache');
 
 
 // Define the webserver and path parameters

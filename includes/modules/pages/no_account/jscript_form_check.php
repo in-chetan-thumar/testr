@@ -6,7 +6,7 @@
  * @copyright Copyright 2003-2006 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: Integrated COWOA v2.4  - 2007 - 2013
+ * @version $Id: jscript_form_check.php 109 2010-04-28 05:47:55Z numinix $
  */
 ?>
 <script language="javascript" type="text/javascript"><!--
@@ -135,7 +135,10 @@ function check_form(form_name) {
   check_input("telephone", <?php echo ENTRY_TELEPHONE_MIN_LENGTH; ?>, "<?php echo ENTRY_TELEPHONE_NUMBER_ERROR; ?>");
 <?php } ?>
 
-
+<?php if ((int)ENTRY_PASSWORD_MIN_LENGTH > 0) { ?>
+  check_password("password", "confirmation", <?php echo ENTRY_PASSWORD_MIN_LENGTH; ?>, "<?php echo ENTRY_PASSWORD_ERROR; ?>", "<?php echo ENTRY_PASSWORD_ERROR_NOT_MATCHING; ?>");
+  check_password_new("password_current", "password_new", "password_confirmation", <?php echo ENTRY_PASSWORD_MIN_LENGTH; ?>, "<?php echo ENTRY_PASSWORD_ERROR; ?>", "<?php echo ENTRY_PASSWORD_NEW_ERROR; ?>", "<?php echo ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING; ?>");
+<?php } ?>
 
   if (error == true) {
     alert(error_message);

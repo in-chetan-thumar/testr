@@ -10,7 +10,7 @@
  */
 
 // This should be first line of the script:
-$zco_notifier->notify('NOTIFY_HEADER_START_CREATE_ACCOUNT');
+//$zco_notifier->notify('NOTIFY_HEADER_START_CREATE_ACCOUNT');
 
 
 require(DIR_WS_MODULES . zen_get_module_directory('require_languages.php'));

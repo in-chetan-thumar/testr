@@ -9,18 +9,13 @@
  * @copyright Copyright 2003-2006 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: Integrated COWOA v2.4  - 2007 - 2013
+ * @version $Id: J_Schilz for Integrated COWOA - 14 April 2007
  */
-?>  <!-- TPL_ORDER_STATUS_DEFAULT.PHP -->
+?>
 <div class="centerColumn" id="accountHistInfo">
 
 <h1 id="orderHistoryHeading"><?php echo HEADING_TITLE; ?></h1><br />
-<?php
-if(isset($_POST['action']) && $_POST['action'] == "process") {
-  if($errorInvalidID) echo ERROR_INVALID_ORDER;
-  if($errorInvalidEmail) echo ERROR_INVALID_EMAIL;
-  if($errorNoMatch) echo ERROR_NO_MATCH; 
-}?>
+
 <?php if($order) { ?>
 
   <table border="0" width="100%" cellspacing="0" cellpadding="0" summary="Itemized listing of previous order, includes number ordered, items and prices">
@@ -86,7 +81,7 @@ if(isset($_POST['action']) && $_POST['action'] == "process") {
   /**
    * Used to display any downloads associated with the cutomers account
    */
-    if (DOWNLOAD_ENABLED == 'true') require($template->get_template_dir('tpl_modules_os_downloads.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_os_downloads.php');
+    if (DOWNLOAD_ENABLED == 'true') require($template->get_template_dir('tpl_modules_downloads.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_downloads.php');
   ?>
 
 
@@ -147,17 +142,19 @@ echo zen_draw_form('order_status', zen_href_link(FILENAME_ORDER_STATUS, '', 'SSL
 ?>
 <fieldset>
 <legend><?php echo HEADING_TITLE; ?></legend>
-
+<?php
+if(isset($_POST['action']) && $_POST['action'] == "process") {
+  if($errorInvalidID) echo ERROR_INVALID_ORDER;
+  if($errorInvalidEmail) echo ERROR_INVALID_EMAIL;
+  if($errorNoMatch) echo ERROR_NO_MATCH; 
+}?>
 
 <?php echo TEXT_LOOKUP_INSTRUCTIONS; ?><br /><br />
-
-<label class="inputLabel"><?php echo ENTRY_ORDER_NUMBER; ?></label>
-<?php echo zen_draw_input_field('order_id',$_GET['order_id'],'', 'size="10" id="order_id"'); ?> 
-<br />
-<br />
 <label class="inputLabel"><?php echo ENTRY_EMAIL; ?></label>
 <?php echo zen_draw_input_field('query_email_address', '' , 'size="35" id="query_email_address"'); ?> 
-<br />
+<br class="clearBoth" />
+<label class="inputLabel"><?php echo ENTRY_ORDER_NUMBER; ?></label>
+<?php echo zen_draw_input_field('order_id', '', 'size="20" id="order_id"'); ?> 
 
 <div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_CONTINUE, BUTTON_CONTINUE_ALT); ?></div>
 </fieldset>
@@ -168,18 +165,5 @@ echo zen_draw_form('order_status', zen_href_link(FILENAME_ORDER_STATUS, '', 'SSL
 
 
 </form>
-<!--bof logoff-->
-<!--Kills session after COWOA customer looks at order status-->
-<?php
-if ($_SESSION['COWOA'] and COWOA_LOGOFF == 'true') {
-  zen_session_destroy();
-} else {
-  if (isset($_SESSION['customer_guest_id'])) {
-    echo TEXT_CHECKOUT_LOGOFF_GUEST;
-  } elseif (isset($_SESSION['customer_id'])) {
-    echo TEXT_CHECKOUT_LOGOFF_CUSTOMER;
-  }
-?>
-<?php } ?>
-<!--eof logoff-->
+
 </div>

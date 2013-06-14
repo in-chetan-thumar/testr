@@ -69,7 +69,7 @@
   define('DOB_FORMAT_STRING', 'mm/dd/yyyy');
 
 //text for sidebox heading links
-  define('BOX_HEADING_LINKS', '&nbsp;&nbsp;[more]');
+  define('BOX_HEADING_LINKS', '');
 
 // categories box text in sideboxes/categories.php
   define('BOX_HEADING_CATEGORIES', 'Categories');

@@ -189,7 +189,7 @@ $content .= '</div>';
 				$news_box_query->MoveNext();
 			};
 			for ($i=1; $i<=sizeof($news_list); $i++) {
-				$content .= '- <a href="' . zen_href_link('more_news&news_id=' . $news_list[$i]['id'], '', 'NONSSL') . '">' . $news_list[$i]['title'] . '</a><br />'; 
+				$content .= '<div class="newssidebox"><a href="' . zen_href_link('more_news&news_id=' . $news_list[$i]['id'], '', 'NONSSL') . '">' . $news_list[$i]['title'] . '</a></div>'; 
 			};
 		$content .= '<hr>';
 		$content .= '<a href="' . zen_href_link('news_archiv', '', 'NONSSL') . '">News Archiv</a>';

@@ -17,8 +17,7 @@
 // | to obtain it through the world-wide-web, please send a note to       |
 // | license@zen-cart.com so we can mail you a copy immediately.          |
 // +----------------------------------------------------------------------+
-// $Id: gv_redeem.php 4155 2006-08-16 17:14:52Z ajeh $
-// @version $Id: Integrated COWOA v2.4  - 2007 - 2013
+//   * @version $Id: J_Schilz for Integrated COWOA - 14 April 2007
 //
 
 define('NAVBAR_TITLE', 'Redeem ' . TEXT_GV_NAME);

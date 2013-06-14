@@ -10,10 +10,10 @@
 .ygtvtmh { background: url(../images/menu/collapseh.gif) 4px 6px no-repeat; width:1em; height:22px; cursor:pointer }
 
 /* first or middle sibling, expandable */
-.ygtvtp { background: url(../images/menu/expand.gif) 4px 6px no-repeat; width:1em; height:22px; cursor:pointer }
+.ygtvtp { background: url(../images/menu/expand.gif) 4px 8px no-repeat; width:1em; height:22px; cursor:pointer }
 
 /* first or middle sibling, expandable, hover */
-.ygtvtph { background: url(../images/menu/expandh.gif) 4px 6px no-repeat; width:1em; height:22px; cursor:pointer }
+.ygtvtph { background: url(../images/menu/expandh.gif) 4px 8px no-repeat; width:1em; height:22px; cursor:pointer }
 
 /* last sibling, no children */
 .ygtvln { width:1em; height:20px; }

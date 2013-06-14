@@ -37,7 +37,7 @@
 
     if ($random_specials_sidebox_product->RecordCount() > 0)  {
       require($template->get_template_dir('tpl_specials.php',DIR_WS_TEMPLATE, $current_page_base,'sideboxes'). '/tpl_specials.php');
-      $title =  BOX_HEADING_SPECIALS;
+      $title =  "Deal and discount";
       $title_link = FILENAME_SPECIALS;
       require($template->get_template_dir($column_box_default, DIR_WS_TEMPLATE, $current_page_base,'common') . '/' . $column_box_default);
     }

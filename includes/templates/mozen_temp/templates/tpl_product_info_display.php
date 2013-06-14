@@ -77,96 +77,96 @@
     
 <!--eof Main Product Image-->
 
-<!--bof Product Name-->
 <div class="product_info_right">
-<div class="product_title">
-<h3 id="productName" class="productGeneral"><?php echo $products_name; ?></h3>
-</div>
-<!--eof Product Name-->
+	<!--bof Product Name-->
+	<div class="product_title">
+		<h3 id="productName" class="productGeneral"><?php echo $products_name; ?></h3>
+	</div>
+	<!--eof Product Name-->
 
-<!--bof Product Price block -->
-<div class="product_price" style="opacity:0.75">
-	<strong>Price :</strong>
+	<!--bof Product Price block -->
+	<div class="product_price" style="opacity:0.75">
+		<div style="float: left;width: 10%;"><strong>Price :</strong></div>
+			
+		<div class="price_amount" style="display:inline-block; float: left; width: 90%;">
+		<span class="price_amount" style="float: left; width: 100%;">
+		<?php
+		// base price
+		  if ($show_onetime_charges_description == 'true') {
+			$one_time = '<span >' . TEXT_ONETIME_CHARGE_SYMBOL . TEXT_ONETIME_CHARGE_DESCRIPTION . '</span><br />';
+		  } else {
+			$one_time = '';
+		  }
+		  echo $one_time . ((zen_has_product_attributes_values((int)$_GET['products_id']) and $flag_show_product_info_starting_at == 1) ? TEXT_BASE_PRICE : '') . zen_get_products_display_price((int)$_GET['products_id']);
+		?></span></div>
+	</div>
+	<!--eof Product Price block -->
+
+	<!--bof free ship icon  -->
+	<?php if(zen_get_product_is_always_free_shipping($products_id_current) && $flag_show_product_info_free_shipping) { ?>
+	<div id="freeShippingIcon"><?php echo TEXT_PRODUCT_FREE_SHIPPING_ICON; ?></div>
+	<?php } ?>
+	<!--eof free ship icon  -->
+
+	<!--bof Add to Cart Box -->
+
+	<div id="cartAdd">
+
+	<!--bof Attributes Module -->
+	<?php
+	  if ($pr_attr->fields['total'] > 0) {
+	?>
+	<?php
+	/**
+	 * display the product atributes
+	 */
+	  require($template->get_template_dir('/tpl_modules_attributes.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_attributes.php'); ?>
+	<?php
+	  }
+	?>
+
+	<!--eof Attributes Module -->
+
+
+	<?php
+	if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
+	  // do nothing
+	} else {
+	?>
+				<?php
+		//$display_qty = (($flag_show_product_info_in_cart_qty == 1 and $_SESSION['cart']->in_cart($_GET['products_id'])) ? '<p>' . PRODUCTS_ORDER_QTY_TEXT_IN_CART . $_SESSION['cart']->get_quantity($_GET['products_id']) . '</p>' : '');
+				if ($products_qty_box_status == 0 or $products_quantity_order_max== 1) {
+				  // hide the quantity box and default to 1
+				  $the_button = '<input type="hidden" name="cart_quantity" value="1" />' . zen_draw_hidden_field('products_id', (int)$_GET['products_id']) . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
+				} else {
+				  // show the quantity box
+				  
+				  $quantity = str_replace("Add to cart","Quantity ","Add to cart:");
+				  
+				  
+		$the_button = '<strong>' . $quantity . '</strong> &nbsp;<input type="text" name="cart_quantity" value="' . (zen_get_buy_now_qty($_GET['products_id'])) . '" maxlength="6" size="4" /><br />' . zen_get_products_quantity_min_units_display((int)$_GET['products_id']) . zen_draw_hidden_field('products_id', (int)$_GET['products_id']);
+				}
+		$display_button = zen_get_buy_now_button($_GET['products_id'], $the_button);
+	  ?>
+	  <?php if ($display_qty != '' or $display_button != '') { ?>
 		
-	<div class="price_amount" style="display:inline-block">
-    <span class="price_amount">
-    <?php
-    // base price
-      if ($show_onetime_charges_description == 'true') {
-        $one_time = '<span >' . TEXT_ONETIME_CHARGE_SYMBOL . TEXT_ONETIME_CHARGE_DESCRIPTION . '</span><br />';
-      } else {
-        $one_time = '';
-      }
-      echo $one_time . ((zen_has_product_attributes_values((int)$_GET['products_id']) and $flag_show_product_info_starting_at == 1) ? TEXT_BASE_PRICE : '') . zen_get_products_display_price((int)$_GET['products_id']);
-    ?></span></div>
-</div>
-<!--eof Product Price block -->
-
-<!--bof free ship icon  -->
-<?php if(zen_get_product_is_always_free_shipping($products_id_current) && $flag_show_product_info_free_shipping) { ?>
-<div id="freeShippingIcon"><?php echo TEXT_PRODUCT_FREE_SHIPPING_ICON; ?></div>
-<?php } ?>
-<!--eof free ship icon  -->
-
-<!--bof Add to Cart Box -->
-
-<div id="cartAdd">
-
-<!--bof Attributes Module -->
-<?php
-  if ($pr_attr->fields['total'] > 0) {
-?>
-<?php
-/**
- * display the product atributes
- */
-  require($template->get_template_dir('/tpl_modules_attributes.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_attributes.php'); ?>
-<?php
-  }
-?>
-
-<!--eof Attributes Module -->
-
-
-<?php
-if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
-  // do nothing
-} else {
-?>
-            <?php
-    //$display_qty = (($flag_show_product_info_in_cart_qty == 1 and $_SESSION['cart']->in_cart($_GET['products_id'])) ? '<p>' . PRODUCTS_ORDER_QTY_TEXT_IN_CART . $_SESSION['cart']->get_quantity($_GET['products_id']) . '</p>' : '');
-            if ($products_qty_box_status == 0 or $products_quantity_order_max== 1) {
-              // hide the quantity box and default to 1
-              $the_button = '<input type="hidden" name="cart_quantity" value="1" />' . zen_draw_hidden_field('products_id', (int)$_GET['products_id']) . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
-            } else {
-              // show the quantity box
-			  
-			  $quantity = str_replace("Add to cart","Quantity ","Add to cart:");
-			  
-			  
-    $the_button = '<strong>' . $quantity . '</strong> &nbsp;<input type="text" name="cart_quantity" value="' . (zen_get_buy_now_qty($_GET['products_id'])) . '" maxlength="6" size="4" /><br />' . zen_get_products_quantity_min_units_display((int)$_GET['products_id']) . zen_draw_hidden_field('products_id', (int)$_GET['products_id']);
-            }
-    $display_button = zen_get_buy_now_button($_GET['products_id'], $the_button);
-  ?>
-  <?php if ($display_qty != '' or $display_button != '') { ?>
-    
-    	<div class="cart_info">
-    		<div class="cart_quantity">
-    		<?php
-      			//echo $display_qty;
-	   			echo $display_button;
-	   		?>
-			</div>
-    
-			<div class="cart_button">
-    		<?php
-     			echo zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
-            ?>
-    		</div>
-       </div>
-  <?php } // display qty and button ?>
-<?php } // CUSTOMERS_APPROVAL == 3 ?>
-<!--eof Add to Cart Box-->
+			<div class="cart_info">
+				<div class="cart_quantity">
+				<?php
+					//echo $display_qty;
+					echo $display_button;
+				?>
+				</div>
+		
+				<div class="cart_button">
+				<?php
+					echo zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
+				?>
+				</div>
+		   </div>
+	  <?php } // display qty and button ?>
+	<?php } // CUSTOMERS_APPROVAL == 3 ?>
+	<!--eof Add to Cart Box-->
 
 
 
@@ -187,22 +187,22 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 <?php
   }
 ?>
-<!--eof Product details list -->
+	<!--eof Product details list -->
 
 
 
-<!--bof Quantity Discounts table -->
-<?php
-  if ($products_discount_type != 0) { ?>
-<?php
-/**
- * display the products quantity discount
- */
- require($template->get_template_dir('/tpl_modules_products_quantity_discounts.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_products_quantity_discounts.php'); ?>
-<?php
-  }
-?>
-<!--eof Quantity Discounts table -->
+	<!--bof Quantity Discounts table -->
+	<?php
+	  if ($products_discount_type != 0) { ?>
+	<?php
+	/**
+	 * display the products quantity discount
+	 */
+	 require($template->get_template_dir('/tpl_modules_products_quantity_discounts.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_products_quantity_discounts.php'); ?>
+	<?php
+	  }
+	?>
+	<!--eof Quantity Discounts table -->
 
 
 </div> <!-- eof product_details_right -->
@@ -224,14 +224,14 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 
 <!--bof Reviews button and count-->
 
-<div class="product_review">
+<div class="product_review" style="width: 50%">
 	<span class="title">REVIEWS</span>
     
 <?php
   if ($flag_show_product_info_reviews == 1) {
     // if more than 0 reviews, then show reviews button; otherwise, show the "write review" button
     if ($reviews->fields['count'] > 0 ) { ?>
-<div id="productReviewLink" class="buttonRow back"><?php echo '<a href="' . zen_href_link(FILENAME_PRODUCT_REVIEWS, zen_get_all_get_params()) . '">' . /*zen_image_button(BUTTON_IMAGE_REVIEWS, BUTTON_REVIEWS_ALT) */ 'Go to the Reviews Page' . '</a>'; ?></div>
+<div id="productReviewLink" class="buttonRow back"><?php echo '<a href="' . zen_href_link(FILENAME_PRODUCT_REVIEWS, zen_get_all_get_params()) . '">' . /*zen_image_button(BUTTON_IMAGE_REVIEWS, BUTTON_REVIEWS_ALT) */ 'Go to the reviews page' . '</a>'; ?></div>
 
 <p class="reviewCount"><?php echo ($flag_show_product_info_reviews_count == 1 ? TEXT_CURRENT_REVIEWS . ' ' . $reviews->fields['count'] : ''); ?></p>
 <?php } else { ?>
@@ -243,6 +243,14 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 ?>
 </div>
 <!--eof Reviews button and count -->
+
+<!--bof Tell a Friend button -->
+<div class="product_review" style="width: 50%">
+	<span class="title">TELL A FRIEND</span>
+	<div id="productTellFriendLink" class="buttonRow forward"><?php echo '<a href="' . zen_href_link(FILENAME_TELL_A_FRIEND, 'products_id=' . $_GET['products_id']) . '">Go to the tell a friend page</a>'; ?></div>
+</div>
+<!--eof Tell a Friend button -->
+
 
 <!--bof YouTube -->
 <?php echo (($products_youtube !='') ? '<div id="productYouTube"><iframe width="620" height="415" src="http://www.youtube.com/embed/' . $products_youtube . '" frameborder="0" allowfullscreen></iframe></div>' : '') . "\n"; ?>

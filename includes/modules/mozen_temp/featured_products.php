@@ -76,6 +76,13 @@ if ( (($manufacturers_id > 0 && $_GET['filter_id'] == 0) || $_GET['music_genre_i
 								
   }
 }
+$featured_products_query = "select distinct p.products_id, pd.products_name, p.products_ordered
+                             from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd
+                             where p.products_status = '1'
+                             and p.products_ordered > 0
+                             and p.products_id = pd.products_id
+                             and pd.language_id = '" . (int)$_SESSION['languages_id'] . "'
+                             order by p.products_ordered desc, pd.products_name";
 if ($featured_products_query != '') $featured_products = $db->ExecuteRandomMulti($featured_products_query, MAX_DISPLAY_SEARCH_RESULTS_FEATURED);
 if ($last_featured_products_query != '') $last_featured_products = $db->ExecuteRandomMulti($last_featured_products_query, MAX_DISPLAY_SEARCH_RESULTS_FEATURED);
   

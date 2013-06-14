@@ -100,7 +100,8 @@ elseif(strtolower($slideshow_result->fields['color'])=="pink")
   $right_column_file = 'column_right.php';
   //$body_id = ($this_is_home_page) ? 'indexHome' : str_replace('_', '', $_GET['main_page']);
 ?>
-<body>
+<!--body-->
+<body id="<?php echo $body_id . 'Body'; ?>"<?php if($zv_onload !='') echo ' onload="'.$zv_onload.'"'; ?><?php if(FEC_ONE_PAGE == 'true' && $_GET['main_page'] == 'fec_confirmation') echo ' onLoad="document.fec_confirmation.submit();"';?>> 
 	<div id="mj-container">
 <?php
  /**
