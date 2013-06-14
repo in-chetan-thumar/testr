@@ -64,7 +64,7 @@
   // If you choose "file", then you need to set the DIR_FS_SQL_CACHE to a directory where your apache 
   // or webserver user has write privileges (chmod 666 or 777). We recommend using the "cache" folder inside the Zen Cart folder
   // ie: /path/to/your/webspace/public_html/zen/cache   -- leave no trailing slash  
-  define('SQL_CACHE_METHOD', 'file'); 
+  define('SQL_CACHE_METHOD', ''); 
   define('DIR_FS_SQL_CACHE', 'E:/xampp/htdocs/testr/cache');
 
 // EOF
